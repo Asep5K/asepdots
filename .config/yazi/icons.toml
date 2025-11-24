@@ -1,0 +1,84 @@
+# Default icons
+[default]
+dir  = ""      # folder
+file = ""      # file biasa
+exec = ""      # executable
+link = ""      # symlink
+sock = ""      # socket
+fifo = ""      # fifo
+img  = ""      # file gambar
+video= ""      # file video
+music= ""      # file audio
+
+# Extension-based icons
+[ext]
+# Code
+c     = ""
+cpp   = ""
+h     = ""
+rs    = ""
+go    = ""
+js    = ""
+ts    = ""
+tsx   = ""
+jsx   = ""
+vue   = "﵂"
+php   = ""
+java  = ""
+kt    = ""
+py    = ""
+rb    = ""
+sh    = ""
+pl    = ""
+
+# Web / Markup
+html  = ""
+htm   = ""
+css   = ""
+scss  = ""
+sass  = ""
+md    = ""
+json  = ""
+yaml  = ""
+yml   = ""
+xml   = ""
+
+# Config / System
+ini   = ""
+conf  = ""
+toml  = ""
+lock  = ""
+log   = ""
+
+# Docs
+pdf   = ""
+doc   = ""
+docx  = ""
+xls   = ""
+xlsx  = ""
+ppt   = ""
+pptx  = ""
+
+# Media
+png   = ""
+jpg   = ""
+jpeg  = ""
+gif   = ""
+svg   = ""
+mp4   = ""
+mkv   = ""
+webm  = ""
+mp3   = ""
+flac  = ""
+wav   = ""
+
+# Archives
+zip   = ""
+tar   = ""
+gz    = ""
+7z    = ""
+rar   = ""
+
+# Git
+git   = ""
+

@@ -1,0 +1,128 @@
+{
+    "custom/menu": {
+        "format": "󰣇",
+        // "icon-size": 50,
+        "tooltip": false,
+        "on-click": "rofi -show drun -show-icons -icon-theme Papirus",
+        "on-click-right": "${HYPRSCRIPTS:-$HOME/.config/hypr/scripts}/screenshot-record/record.sh"
+    },
+    "custom/hyprpicker": {
+        "format": "󰈋",
+        "on-click": "hyprpicker -a -f hex",
+        "on-click-right": "hyprpicker -a -f rgb"
+    },
+    "custom/ping": {
+        "format": "{}",
+        "interval": 5,
+        "exec": "${XDG_CONFIG_HOME:-$HOME/.config}/waybar/scripts/ping.sh"
+    },
+    "custom/playerlabel": {
+        "format": "{icon}",
+        "return-type": "json",
+        "max-length": 60,
+        "exec": "playerctl -a metadata --format '{\"text\": \"{{playerName}}: {{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+        "exec-if": "which playerctl && playerctl status",
+        "on-click-middle": "playerctl play-pause",
+        "on-click": "playerctl previous",
+        "on-click-right": "playerctl next",
+        "format-icons": {
+            "Playing": "󰒮 󰐌 󰒭",
+            "Paused": "󰒮 󰏥 󰒭"
+        }
+    },
+    "custom/text": {
+        "format": "{}", //{icon}",
+        "return-type": "json",
+        "restart-interval": 10,
+        // "exec": "${XDG_CONFIG_HOME:-$HOME/.config}/waybar/scripts/text.sh",
+        // "exec": "${XDG_CONFIG_HOME:-$HOME/.config}/waybar/scripts/text_animation.py",
+        "exec": "${XDG_CONFIG_HOME:-$HOME/.config}/waybar/scripts/text-animation",
+        "format-icons": {
+            "write": "",
+            "delete": "󰁮"
+        }
+    },
+    "custom/github": {
+        "format": " {}",
+        "return-type": "json",
+        "interval": 300, // 5 minute
+        "exec": "${XDG_CONFIG_HOME:-$HOME/.config}/waybar/scripts/github.sh",
+        "exec-if": "test -f $XDG_CONFIG_HOME/git/notifications.token",
+        "on-click": "xdg-open https://github.com/notifications"
+    },
+    "custom/weather": {
+        "format": "{}",
+        "return-type": "json",
+        "interval": 3600,
+        "exec": "${XDG_CONFIG_HOME:-$HOME/.config}/waybar/scripts/weather.sh"
+        // "tooltip": true
+    },
+    "custom/pacman": {
+        "format": "{}",
+        "interval": 3600,
+        // "exec": "checkupdates | wc -l",
+        // "exec-if": "exit 0"
+        "return-type": "json",
+        "exec": "${XDG_CONFIG_HOME:-$HOME/.config}/waybar/scripts/checkupdates.sh",
+        "format-icons": {
+            "found-update": ""
+        }
+    },
+    "custom/shutdown": {
+        "format": "⏻",
+        "tooltip-format": "left click: ⏻ shutdown\nright click: 󰤁 reboot",
+        "on-click": "${XDG_CONFIG_HOME:-$HOME/.config}/waybar/scripts/power.sh shutdown",
+        "on-click-middle": "${XDG_CONFIG_HOME:-$HOME/.config}/waybar/scripts/power.sh",
+        "on-click-right": "${XDG_CONFIG_HOME:-$HOME/.config}/waybar/scripts/power.sh reboot"
+    },
+    // "custom/reboot": {
+    // "format": "󰤁",
+    // "tooltip-format": "󰤁 reboot",
+    // "on-click": "${XDG_CONFIG_HOME:-$HOME/.config}/waybar/scripts/power.sh reboot"
+    // },
+    "custom/lock": {
+        "format": "",
+        "tooltip-format": "left click:  lock session\nright click: 󰒲 sleep",
+        "on-click": "${XDG_CONFIG_HOME:-$HOME/.config}/waybar/scripts/power.sh lock",
+        "on-click-middle": "${XDG_CONFIG_HOME:-$HOME/.config}/waybar/scripts/power.sh",
+        "on-click-right": "${XDG_CONFIG_HOME:-$HOME/.config}/waybar/scripts/power.sh sleep"
+    },
+    // "custom/sleep": {
+    // "format": "󰒲",
+    // "tooltip-format": "󰒲 sleep",
+    // "on-click": "${XDG_CONFIG_HOME:-$HOME/.config}/waybar/scripts/power.sh sleep"
+    // }
+    "custom/exit_session": {
+        "format": "󰈆",
+        "tooltip-format": "󰈆 exit session",
+        "on-click": "${XDG_CONFIG_HOME:-$HOME/.config}/waybar/scripts/power.sh logout",
+        "on-click-middle": "${XDG_CONFIG_HOME:-$HOME/.config}/waybar/scripts/power.sh",
+        "on-click-right": "${XDG_CONFIG_HOME:-$HOME/.config}/waybar/scripts/power.sh logout"
+    },
+    "custom/hypridle": {
+        "format": "",
+        // "interval":1,
+        "exec": "pidof hypridle",
+        "exec-if": "exit 0",
+        "tooltip-format": "hypridle oh\nleft click: kill hypridle",
+        "on-click": "pkill hypridle; pkill -SIGUSR2 waybar"
+        // "return-type":"json",
+        // "exec": "${XDG_CONFIG_HOME:-$HOME/.config}/waybar/scripts/hypridle.sh status",
+        // "on-click": "${XDG_CONFIG_HOME:-$HOME/.config}/waybar/scripts/hypridle.sh toggle",
+        // "format-icons":{
+        // "hypridle on": "󰈆",
+        // "hypridle off": ""
+        // }
+    },
+    "custom/gamemode":{
+        "format": "󰊗",
+        "on-click": "${HYPRSCRIPTS:-$HOME/.config/hypr/scripts}/utility/mode.sh gamemode"
+    },
+    "custom/wallpaper":{
+        "format": "",
+        "tooltip-format": "middle click: live wallpaper\nleft click: random wallpaper\nright click: choose wallpaper",
+        "on-click": "${HYPRSCRIPTS:-$HOME/.config/hypr/scripts}/wallpaper/wallpaper.sh -r",
+        "on-click-middle": "${HYPRSCRIPTS:-$HOME/.config/hypr/scripts}/wallpaper/live.sh",
+        "on-click-right": "${HYPRSCRIPTS:-$HOME/.config/hypr/scripts}/wallpaper/wallpaper.sh -s"
+    }
+}

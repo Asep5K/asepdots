@@ -1,0 +1,11 @@
+[flavor]
+# dark =
+use = "kanagawa"
+# theme.toml / flavor.toml
+[git]
+modified = { fg = "blue" }
+deleted  = { fg = "red", bold = true }
+unknown_sign  = " "
+modified_sign = "M"
+deleted_sign  = "D"
+clean_sign    = "✔"

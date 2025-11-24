@@ -1,0 +1,29 @@
+{
+    "memory": {
+        "format": "󰍛 {}%",
+        // "interval": 3,
+        "format-alt": "󰍛 {used}/{total} GiB"
+    },
+    "cpu": {
+        "format": "󰻠 {usage}%",
+        // "interval": 3,
+        "format-alt": "󰻠 {avg_frequency} GHz"
+    },
+    "disk": {
+        "format": "󰋊 {}%",
+        // "interval": 3,
+        "format-alt": "󰋊 {used}/{total} GiB",
+        "path": "/"
+    },
+    "temperature": {
+        // "interval":1,
+        "critical-threshold": 70,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "{icon} {temperatureC}°C",
+        "format-icons": [
+            // "",
+            ""
+            // ""
+        ]
+    }
+}

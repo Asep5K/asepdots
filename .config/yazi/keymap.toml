@@ -1,0 +1,39 @@
+#cd to /mnt
+[[mgr.prepend_keymap]]
+on   = [ "g", "m" ]
+run  = "cd /mnt"
+desc = "Cd to /mnt"
+
+#cd to trash
+[[mgr.prepend_keymap]]
+on   = [ "g", "t" ]
+run  = "cd $HOME/.local/share/Trash"
+desc = "Cd to ~/.local/share/Trash"
+
+# Root directory
+[[mgr.prepend_keymap]]
+on   = [ "g", "r" ]
+run  = "cd /"
+desc = "Cd to root"
+
+#media usb
+[[mgr.prepend_keymap]]
+on   = [ "g", "u" ]
+run  = "cd /run/media/$USER"
+desc = "Cd to Removable drive/usb drive"
+
+# cd to .local
+[[mgr.prepend_keymap]]
+on   = [ "g", "l" ]
+run  = "cd $HOME/.local"
+desc = "Cd to ~/.local"
+
+[[manager.prepend_keymap]]
+on   = [ "<C-t>" ]
+run  = 'plugin thumbnail'
+desc = "Open current directory in Swayimg gallery"
+
+[[mgr.prepend_keymap]]
+on   = [ "c", "m" ]
+run  = "plugin chmod"
+desc = "Chmod on selected files"

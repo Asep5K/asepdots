@@ -1,0 +1,20 @@
+{
+    "backlight": {
+        "on-click": "brightnessctl -s s 0%",
+        "on-click-right": "brightnessctl -s set 100%",
+        "on-click-middle": "brightnessctl -r",
+        "device": "intel-backlight",
+        "format": "{icon} {percent}%",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    }
+}

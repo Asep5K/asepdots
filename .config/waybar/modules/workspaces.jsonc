@@ -1,0 +1,51 @@
+{
+    // hahahihitam
+    "hyprland/workspaces": {
+        // "format": "<sub>{icon}</sub>\n{windows}",
+        "format": "{windows}",
+        // "active-only": true,
+        "format-window-separator": "\n",
+        "window-rewrite-default": "󰣇",
+        "window-rewrite": {
+            "title<.*archwiki.*>":"󰣇",
+            "hyprland": "",
+            ".*minecraft.*": "󰍳",
+            "instagram": "󰋾",
+            "whatsapp": "󰖣",
+            "title<reddit|.*r/.*>": "󰑍",
+            "title<.*youtube.*>": "", 
+            "title<.*github.*>": "", 
+            "class<foot.*> title<yazi.*>": "", 
+            "telegram": "",
+            "discord": "",
+            "mpv": "",
+            "brave(?:-browser)?": "",
+            "thunar": "", 
+            ".*spotify.*": "󰓇",
+            "foot(?:client)?": "",
+            "code(?:-oss)?": "󰨞",
+            "bitwarden": "󰦝",
+            "httptoolkit":"󰵮",
+            "wireshark":"󱙳",
+            "gimp":"",
+            "obs":"",
+            "kdenlive": "",
+            "kdeconnect": "",
+            "gparted": "󰇑",
+            "steam": "󰓓",
+            "timeshift": "󰁯",
+            "java": "",
+            "pulse": "",
+            "title<.*soundcloud.*>": "󰓀",
+            "title<.*myanimelist.*>": "󱃔",
+            "title<kew>": ""
+            },
+            "format-icons":{
+                "default": "󱙜"
+            }
+    }
+    // "hyprland/workspaces": {
+        // "format": "{}"
+        // "active-only": true
+    // }
+}
