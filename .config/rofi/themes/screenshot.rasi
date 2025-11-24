@@ -1,0 +1,49 @@
+* {
+    font:   "0xProto Nerd Font Propo 15";
+    bg3:    #DEDEDE80;
+
+    fg0:    #000000ff;
+    fg1:    #ff000090;
+    fg2:    #ff00d08d;
+
+    background-color:   transparent;
+    text-color:         @fg0;
+
+    margin:     10;
+    padding:    0;
+    spacing:    10;
+}
+
+window {
+    background-color:   @bg3;
+    location:       southeast;
+    width:          240;
+    border-radius:  10;
+}
+
+listview {
+    lines:      4;
+    columns:    1;
+    fixed-height:   false;
+}
+
+element {
+    padding:            8px 16px;
+    spacing:            16px;
+    background-color:   transparent;
+}
+
+element normal active {
+    text-color: @fg2;
+}
+
+element selected normal,
+element selected active {
+    background-color:   @bg3;
+    text-color:         @fg1;
+}
+
+element-text {
+    text-color: inherit;
+    horizontal-align: 0.5; 
+}

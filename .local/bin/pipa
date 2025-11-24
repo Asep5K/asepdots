@@ -1,0 +1,130 @@
+#!/usr/bin/env bash
+
+# 🚰 PIPA - Personal Isolated Package Administrator
+
+set -euo pipefail  # Strict mode
+
+pipa_dir="${XDG_DATA_HOME:-$HOME/.local/share}/pipa"
+pipa_bin="$pipa_dir/bin"
+path="$HOME/.bin"
+manpath="${XDG_DATA_HOME:-$HOME/.local/share}/man/man1"
+source_man="$pipa_dir/share/man/man1"
+
+# Ensure destination exists
+mkdir -p "$path"
+
+pipath() {
+    env PATH="$pipa_bin:$PATH" "$@"
+}
+
+# Setup virtual environment
+if [[ ! -d "$pipa_dir" ]]; then
+    echo "Creating virtual environment..."
+    if ! python3 -m venv "$pipa_dir"; then
+        echo "Error creating virtual environment" >&2
+        exit 1
+    fi
+fi
+
+setup_path(){
+    local shell="$(basename "$SHELL")"
+    local rc_file=""
+    
+    case "$shell" in
+        "zsh") rc_file="$HOME/.zshrc" ;;
+        "bash") rc_file="$HOME/.bashrc" ;;
+        *) echo "Unsupported shell: $shell" >&2; return 1 ;;
+    esac
+    
+        if [[ ":$PATH:" != *":$path:"* ]]; then
+            if [ -f "$rc_file" ]; then
+                echo "Adding $path to PATH in $rc_file"
+                echo "export PATH=\"$path:\$PATH\"" >> "$rc_file"
+                echo "Please restart your shell or run: source $rc_file"
+            else
+                echo "$rc_file not found, please add path manually"
+                echo 'export PATH="$HOME/.bin"'
+            fi
+        fi
+}
+
+should_ignore(){
+    local filename="$1"
+    local patterns=(
+        "activate*"
+        "Activate*" 
+        "pip*"
+        "python*"
+    )
+    for pattern in "${patterns[@]}"; do
+        if [[ "$filename" == $pattern ]]; then
+            return 0  # Should ignore
+        fi
+    done
+    return 1  # Should not ignore
+}
+
+link() {
+    local option="$1"
+
+    if [ "$option" = "link" ]; then
+        for f in "$pipa_bin"/*; do
+            local filename="$(basename "$f")"
+
+            # Skip ignored files
+            if should_ignore "$filename"; then
+                continue
+            fi
+
+            # Create symlink
+            local target="$path/$filename"
+            if [[ ! -L "$target" ]] || [[ "$(readlink "$target")" != "$f" ]]; then
+                ln -sf "$f" "$path/"
+            fi
+        done
+        echo "Done! "
+        
+        if [ -d "$source_man" ]; then
+            for f in "$source_man"/*; do
+            
+                local filename="$(basename "$f")"
+                local target="$manpath/$filename"
+                mkdir -p "$manpath"
+                
+                if [[ ! -L "$target" ]] || [[ "$(readlink "$target")" != "$f" ]]; then
+                    ln -sf "$f" "$manpath/" 
+                fi
+            done
+        fi
+    elif [ "$option" = "unlink" ]; then
+            for link in "$path"/* "$manpath"/*; do
+                if [[ -L "$link" ]] && [[ ! -e "$link" ]]; then
+                    echo "Removing broken symlink $(basename "$link")"
+                    rm -f "$link" 
+                fi
+            done
+            echo "Done Uninstalling Packages"
+    fi
+}
+
+setup_path
+case " $@ " in
+    *" uninstall "*)
+        if pipath pip "$@"; then
+            link "unlink"
+            # TODO: Consider removing broken symlinks
+        else
+            echo "Uninstall failed" >&2
+            exit 1
+        fi
+        ;;
+    *"install"*)
+        if pipath pip "$@"; then
+            link "link"
+        else
+            echo "pip command failed" >&2
+            exit 1
+        fi
+        ;;
+        *)pipath pip "$@";;
+esac

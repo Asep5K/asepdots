@@ -1,0 +1,3 @@
+(include "./eww/calender.yuck")
+(include "./eww/profile.yuck")
+

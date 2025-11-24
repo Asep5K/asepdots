@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -e
+
+prompt_dir="$HOME/.config/starship/collection"
+ls "$prompt_dir"
+
+while true; do
+    read -rp "set one: " prompt
+    file="$prompt_dir/$prompt.toml"
+
+    if [ -f "$file" ]; then
+     ln -sf "collection/$prompt.toml" "$HOME/.config/starship/starship_zsh.toml"
+     break
+    else
+     echo "$prompt.toml not found"
+    fi
+done

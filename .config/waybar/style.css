@@ -1,0 +1,109 @@
+@import "./colors.css";
+
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 13px;
+    font-weight: bold;
+    background-color: transparent;
+    border-radius: 5px;
+    min-height: 0;
+}
+
+#window,
+#tooltip {
+    background-color: @inverse_primary;
+}
+
+#waybar {
+    background: alpha(@background, 0.6);
+    border-radius: 10;
+}
+
+#workspaces {
+    margin: 1px 0;
+    color: @background;
+
+}
+
+#workspaces button {
+    color: @secondary;
+    padding: 0 5px;
+}
+
+#workspaces button:hover {
+    background: alpha(@surface_tint, 0.6);
+    transition: slide;
+    border-bottom: 1px;
+    padding: 0 8px;
+}
+
+#workspaces button.active {
+    color: @surface_tint;
+    border: 2px solid @source_color;
+    padding: 0 8px;
+    margin: 0 2px;
+}
+
+#cpu,
+#disk,
+#tray,
+#clock,
+#memory,
+#network,
+#battery,
+#bluetooth,
+#backlight,
+#pulseaudio,
+#custom-menu, 
+#custom-hyprpicker {
+    color: @surface_tint;
+    margin: 1px 0;
+    padding: 0 10px;
+}
+
+#cpu:hover,
+#disk:hover,
+#clock:hover,
+#memory:hover,
+#battery:hover,
+#network:hover,
+#bluetooth:hover,
+#backlight:hover,
+#pulseaudio:hover,
+#custom-playerctl:hover,
+#custom-hyprpicker:hover,
+#custom-playerlabel:hover {
+    background-color: rgba(128, 128, 128, 0.6);
+}
+
+#network,
+#pulseaudio {
+color: @surface_tint;
+}
+
+#custom-ping {
+    color: @surface_tint;
+    margin-right: 0px;
+    font-family: Proto Nerd Font;
+}
+
+#custom-user {
+margin-right: 75px;
+color: @surface_tint;
+font-family: Monocraft Nerd Font;
+}
+
+#clock {
+    /* font-family: Monocraft Nerd Font; */
+    font-family: Proto Nerd Font;
+    margin-right: 0px;
+    color: @surface_tint;
+}
+
+
+#custom-playerlabel,
+#custom-playerctl {
+    /* font-family: Proto Nerd Font; */
+    color: @surface_tint;
+    padding: 0px 0px 0 20px;
+}
