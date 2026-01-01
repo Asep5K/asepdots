@@ -2,3 +2,4 @@
 .config/bash/
 .bashrc
 .zshenv
+.config/starship/
