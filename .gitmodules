@@ -1,0 +1,3 @@
+[submodule ".config/eww"]
+	path = .config/eww
+	url = https://github.com/Asep5K/my-eww-bar-gw.git
